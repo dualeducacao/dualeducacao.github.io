@@ -1,0 +1,547 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  "Montserrat", serif;
+}
+
+body, html {
+    scroll-behavior: smooth;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    background-image: url('assets/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    width: 100%;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    justify-content: flex-start;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.container.active {
+    display: block;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 20px;
+    line-height: 35px;
+}
+
+input[type="email"], input[type="nome"], input[type="tel"], input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    color:#fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+.form-group.multiple {
+    display: flex;
+    flex-direction: column;
+}
+
+.interface {
+    width: 640px;
+    display: flex;
+}
+
+
+
+/* ESTILO DO CABEÇALHO */
+.principal {
+    display: flex;
+    margin-top: 40px;
+}
+
+header {
+    text-align: left;
+}
+
+header>.interface {
+    display: block;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ESTILO DO TOPO DO SITE */
+section.topo-do-site {
+    padding: 0px 0%;
+    position: relative;
+}
+
+.topo-do-site h1 {
+    color: #fff;
+    font-size: 27px;
+    line-height: 40px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.topo-do-site h1 span{
+    font-size: 25px;
+    color:#7c46ff;
+    margin-right: 10px;
+    text-align: left;
+}
+
+.topo-do-site p {
+    color: #fff;
+    font-size: 16px;
+    line-height: 23px;
+    margin-bottom: 20px;
+}
+
+.topo-do-site h2 {
+    color: #fff;
+    font-size: 20px;
+    line-height: 35px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.pergunta {
+    width: 400px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    padding: 0;
+}
+
+ul li label {
+    color: #fff;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+input[type="radio"]:checked {
+    background-color: #4CAF50; /* Cor quando selecionado */
+    border-color: #4CAF50;
+}
+
+input[type="radio"] {
+    width: 30px;
+    height: 15px;
+    margin-top: 20px;
+    border-radius: 50%;
+    border: 2px solid #007BFF;
+    transition: background-color 0.3s ease;
+}
+
+/* ESTIO DO FORMULÁRIO*/
+section.formulario {
+    padding: 0px 0%;
+}
+
+form {
+    max-width: 620px;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid white;
+    border-color: #fff;
+    outline: 10;
+    padding: 8px 15px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+}
+
+form textarea {
+    resize: none;
+    height: 127px;
+}
+
+button {
+    background-color: #9be6ff;
+    color: #000;
+    padding: 10px 15px;
+    border: 0;
+    width: 115px;
+    height: 45px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: .4s;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+button:disabled {
+    background-color: #d3d3d3;
+    opacity: 0.1;
+    cursor: not-allowed;
+}
+
+button:hover:enabled {
+    box-shadow: 0px 0px 8px #a4a7a471;
+    transform: scale(1.05);
+    transition: .4s;
+    color: #fff;
+    background-color: #1081a7;
+    cursor: pointer;
+}
+
+.subtitulo p {
+    color: #fff;
+    font-weight: 680;
+    font-size: 18px;
+    margin-top: 13px;
+    margin-left: 243px;
+}
+
+.aviso p {
+    font-size: 12px;
+    margin-top: 10px;
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+}
+
+.carousel {
+    position:absolute;
+    width: 100%;
+    max-width: 500px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    background-color: #7c46ff;
+    border-radius: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.carousel-slide .inner {
+    background-color: #292961;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.top-button {
+    border: 2px solid white;
+    border-radius: 8px;
+    background: transparent;
+    color: white;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+    width: fit-content;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 16px 0 8px;
+    color: #fff;
+}
+
+.duration {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #fff;
+}
+
+.rating-section {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    padding: 8px 0;
+    margin-top: 16px;
+}
+
+.rating-section .stars {
+    display: flex;
+    align-items: center;
+}
+
+.stars span {
+    font-size: 20px;
+    margin-right: 4px;
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+}
+
+.stars .star {
+    cursor: pointer;
+}
+
+.profile-pics {
+    display: flex;
+    gap: 8px;
+    margin-left: 8px;
+}
+
+.profile-pics img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.carousel:hover .carousel-controls {
+    opacity: 1;
+}
+
+.control {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.carousel-indicators .indicator {
+    width: 12px;
+    height: 12px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+}
+
+.carousel-indicators .indicator.active {
+    background: white;
+}
+
+.learn-more {
+    margin-top: 16px;
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+}
+
+
+.material-symbols-outlined {
+    color: #fff;
+font-variation-settings:
+'FILL' 0,
+'wght' 400,
+'GRAD' 0,
+'opsz' 24
+
+}
+
+/* ESTILO RODAPÉ */
+
+.borda {
+    margin-top: 10px;
+    border-top: 4px solid #292961;
+    border-radius: 7px;
+    width: 74px;
+    display: inline-block;
+}
+
+.borda-grande {
+    margin-top: 10px;
+    border-top: 4px solid #9be6ff;
+    border-radius: 7px;
+    width: 625px;
+    display: inline-block;
+}
+
+.borda-white {
+    margin-top: 10px;
+    border-top: 4px solid #fff;
+    border-radius: 7px;
+    width: 74px;
+    display: inline-block;
+}
+
+.borda-certo {
+    margin-top: 10px;
+    border-top: 4px solid #9be6ff;
+    border-radius: 7px;
+    width: 74px;
+    display: inline-block;
+}
+
+
+
+@media screen and (max-width: 1080px) {
+
+    /* CLASSES GERAIS */
+    .interface {
+        max-width: 320px;
+        height: 40px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 500px;
+        justify-content: flex-start;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: none;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 10px;
+        font-size: 20px;
+        line-height: 35px;
+    }
+    
+    input[type="email"], input[type="nome"], input[type="tel"], input[type="text"], select {
+        width: 100%;
+    }
+
+    .aviso p {
+        text-align: center;
+    }
+
+    /* ESTILO DO CABEÇALHO */
+    .principal {
+        display: flex;
+    }
+
+    header {
+        text-align: left;
+    }
+
+    /* TOPO DO SITE */
+    section.topo-do-site {
+        padding: 10px 0%;
+        margin-right: 1px;
+    }
+
+    .topo-do-site h1 {
+        margin-top: 20px;
+    }
+    
+    .topo-do-site h1 span{
+        font-size: 25px;
+        color:#7c46ff;
+        margin-right: 10px;
+        text-align: left;
+    }
+
+    .topo-do-site p {
+        text-align: left;
+    }
+
+    /* ESTILO FORMULÁRIO */
+    .subtitulo p {
+        font-weight: 600;
+        font-size: 18px;
+        margin-top: 5px;
+        margin-left: 73px;
+    }
+
+    .aviso p {
+        margin-top: 30px;
+        display: flex;
+        max-width: 320px;
+    }
+
+    form {
+        max-width: 320px;
+    }
+
+    /* ESTILO RODAPÉ */
+
+    .borda {
+        display: none;
+    }
+
+    .borda-grande {
+        display: none;
+    }
+
+    .borda-white {
+        display: none;
+    }
+
+    .borda-certo {
+        display: none;
+    }
+
+}

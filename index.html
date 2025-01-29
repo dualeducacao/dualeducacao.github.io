@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/Asset.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/Asset.png" />
+    <!-- FIM GOOGLE FONTS -->
+    <!--BOOTSTRAP ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+    <link rel="stylesheet" href="style.css" />
+    <!--FIM BOOTSTRAP ICONS-->
+    <title>Dual Educação</title>
+    <script>
+        function showPage(current, next) {
+            document.getElementById(current).classList.remove('active');
+            document.getElementById(next).classList.add('active');
+        }
+
+        function validateInput(inputId, buttonId) {
+            const input = document.getElementById(inputId);
+            const button = document.getElementById(buttonId);
+            input.addEventListener('input', () => {
+                button.disabled = input.value.length < 5;
+            });
+        }
+
+        function validateRadio(groupName, buttonId) {
+            const radios = document.getElementsByName(groupName);
+            const button = document.getElementById(buttonId);
+            radios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    button.disabled = false;
+                });
+            });
+        }
+
+        function updateHiddenField(fieldId, value) {
+            document.getElementById(fieldId).value = value;
+        }
+
+        function handleQuestion4() {
+            const selected = document.querySelector('input[name="profissao"]:checked').value;
+            updateHiddenField('hiddenProfissao', selected);
+            if (selected === "dentista") {
+                showPage('page4', 'page5');
+            } else if (selected === "tecnico") {
+                showPage('page4', 'page6');
+            } else {
+                showPage('page4', 'page7');
+            }
+        }
+
+        function handleQuestion5() {
+            const selected = document.querySelector('input[name="cargo"]:checked').value;
+            updateHiddenField('hiddenCargo', selected);
+            showPage('page5', 'page7');
+        }
+
+        function handleQuestion6() {
+            const selected = document.querySelector('input[name="setor"]:checked').value;
+            updateHiddenField('hiddenSetor', selected);
+            showPage('page6', 'page8');
+        }
+
+        function handleQuestion7() {
+            const selected = document.querySelector('input[name="faturamento"]:checked').value;
+            updateHiddenField('hiddenFaturamento', selected);
+            if (selected === "acima_10_milhoes" || selected === "5_10_milhoes" || selected === "1_5_milhoes" || selected === "500mil_1_milhao" || selected === "ate_500_mil") {
+                document.getElementById('form').action = "https://api.sheetmonkey.io/form/5ADwWSYufbPiTUmRTzKDLr";
+                document.getElementById('form').submit();
+                showPage('page7', 'page9');
+            } else {
+                document.getElementById('form').action = "https://api.sheetmonkey.io/form/3SJxUqFxRQgYYsLNY77pLD";
+                document.getElementById('form').submit();
+                showPage('page7', 'page10');
+            }
+        }
+
+        function handleQuestion8() {
+            const selected = document.querySelector('input[name="salario"]:checked').value;
+            updateHiddenField('hiddenSalario', selected);
+            if (selected === "acima_30_mil" || selected === "15_30_mil" || selected === "5_15_mil") {
+                document.getElementById('form').action = "https://api.sheetmonkey.io/form/5ADwWSYufbPiTUmRTzKDLr";
+                document.getElementById('form').submit();
+                showPage('page8', 'page9');
+            } else {
+                document.getElementById('form').action = "https://api.sheetmonkey.io/form/3SJxUqFxRQgYYsLNY77pLD";
+                document.getElementById('form').submit();
+                showPage('page8', 'page10');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            validateInput('email', 'btn1');
+            validateInput('nome', 'btn2');
+            validateInput('telefone', 'btn3'); // Corrigido para habilitar o botão na pergunta de telefone
+        });
+    </script>
+</head>
+<body>
+    <!-- Formulário invisível para envio -->
+    <form id="form" action="https://api.sheetmonkey.io/form/j6aHSy6UUFkSduNLYXqCCX" method="post">
+        <input type="hidden" id="hiddenEmail" name="email">
+        <input type="hidden" id="hiddenNome" name="nome">
+        <input type="hidden" id="hiddenTelefone" name="telefone">
+        <input type="hidden" id="hiddenProfissao" name="profissao">
+        <input type="hidden" id="hiddenCargo" name="cargo">
+        <input type="hidden" id="hiddenSetor" name="setor">
+        <input type="hidden" id="hiddenFaturamento" name="faturamento">
+        <input type="hidden" id="hiddenSalario" name="salario">
+    </form>
+
+    <div id="page1" class="container active">
+        <header>
+            <div class="interface">
+                <div class="principal">
+                <div class="image"><img src="assets/Asset 7.png" alt="logo" /></div>
+                <div class="subtitulo">
+                    <p>Dual Programas Imersivos</p>
+                </div>
+                </div>
+                <div class="borda-white">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+            </div>
+        </header>
+        <section class="topo-do-site" id="inicio">
+            <div class="txt-topo-site">
+            <h1><span>|</span>Olá,</h1>
+            <p>
+                Para que possamos sugerir o programa mais adequado ao seu perfil,
+                precisamos de algumas informações adicionais.
+            </p>
+            </div>
+        </section>
+        <div class="form-group">
+            <label for="email">1. Qual é o seu email?</label>
+            <input type="text" id="email" name="email" oninput="updateHiddenField('hiddenEmail', this.value)" required>
+        </div>
+        <button id="btn1" type="button" onclick="showPage('page1', 'page2')" disabled>Próximo</button>
+        <div class="aviso">
+            <p> Ao clicar em Confirmar você automaticamente aceita os nossos
+                termos de uso e política de privacidade.
+            </p>
+        </div>
+    </div>
+
+    <div id="page2" class="container">
+        <header>
+            <div class="interface">
+                <div class="principal">
+                <div class="image"><img src="assets/Asset 7.png" alt="logo" /></div>
+                <div class="subtitulo">
+                    <p>Dual Programas Imersivos</p>
+                </div>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-white">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+            </div>
+        </header>
+            <section class="topo-do-site" id="inicio">
+                <div class="txt-topo-site">
+                <h1><span>|</span>Agradecemos seu interesse</h1>
+                <p>
+                    Para dar andamento à sua inscrição, preencha as informações a seguir.
+                </p>
+                </div>
+            </section>
+        <div class="form-group multiple">
+            <label for="nome">2. Qual é o seu nome completo?</label>
+            <input type="text" id="nome" name="nome" oninput="updateHiddenField('hiddenNome', this.value)" required>
+        </div>
+        <button id="btn2" type="button" onclick="showPage('page2', 'page3')" disabled>Próximo</button>
+        <div class="aviso">
+            <p> Ao clicar em Confirmar você automaticamente aceita os nossos
+                termos de uso e política de privacidade.
+            </p>
+        </div>
+    </div>
+
+    <div id="page3" class="container">
+        <header>
+            <div class="interface">
+                <div class="principal">
+                <div class="image"><img src="assets/Asset 7.png" alt="logo" /></div>
+                <div class="subtitulo">
+                    <p>Dual Programas Imersivos</p>
+                </div>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-white">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+            </div>
+        </header>
+            <section class="topo-do-site" id="inicio">
+                <div class="txt-topo-site">
+                <h1><span>|</span>Agradecemos seu interesse</h1>
+                <p>
+                    Para dar andamento à sua inscrição, preencha as informações a seguir.
+                </p>
+                </div>
+            </section>
+        <div class="form-group">
+            <label for="telefone">3. Qual é o seu número de telefone?</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(xx) xxxx-xxxx" pattern="\(\d{2}\) \d{4,5}-\d{4}" oninput="updateHiddenField('hiddenTelefone', this.value)" required>
+        </div>
+        <button id="btn3" type="button" onclick="showPage('page3', 'page4')" disabled>Próximo</button>
+        <div class="aviso">
+            <p> Ao clicar em Confirmar você automaticamente aceita os nossos
+                termos de uso e política de privacidade.
+            </p>
+        </div>
+    </div>
+
+    <div id="page4" class="container">
+        <header>
+            <div class="interface">
+                <div class="principal">
+                <div class="image"><img src="assets/Asset 7.png" alt="logo" /></div>
+                <div class="subtitulo">
+                    <p>Dual Programas Imersivos</p>
+                </div>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-white">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+            </div>
+        </header>
+            <section class="topo-do-site" id="inicio">
+                <div class="txt-topo-site">
+                <h1><span>|</span>Agradecemos seu interesse</h1>
+                <p>
+                    Para dar andamento à sua inscrição, preencha as informações a seguir.
+                </p>
+                </div>
+            </section>
+        <div class="form-group multiple">
+            <label>4. Você é dentista ou técnico?</label>
+            <label><input type="radio" name="profissao" value="dentista" onclick="handleQuestion4()"> Dentista</label>
+            <label><input type="radio" name="profissao" value="tecnico" onclick="handleQuestion4()"> Técnico</label>
+            <label><input type="radio" name="profissao" value="investidor" onclick="handleQuestion4()"> Investidor</label>
+        </div>
+        <div class="aviso">
+            <p> Ao clicar em Confirmar você automaticamente aceita os nossos
+                termos de uso e política de privacidade.
+            </p>
+        </div>
+    </div>
+
+    <div id="page5" class="container">
+        <header>
+            <div class="interface">
+                <div class="principal">
+                <div class="image"><img src="assets/Asset 7.png" alt="logo" /></div>
+                <div class="subtitulo">
+                    <p>Dual Programas Imersivos</p>
+                </div>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-white">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+            </div>
+        </header>
+            <section class="topo-do-site" id="inicio">
+                <div class="txt-topo-site">
+                <h1><span>|</span>Agradecemos seu interesse</h1>
+                <p>
+                    Para dar andamento à sua inscrição, preencha as informações a seguir.
+                </p>
+                </div>
+            </section>
+        <div class="form-group multiple">
+            <label>5. Qual seu cargo dentro do laboratório ou clínica?</label>
+            <label><input type="radio" name="cargo" value="socio" onclick="handleQuestion5()"> Sócio ou fundador</label>
+            <label><input type="radio" name="cargo" value="dentista_responsavel" onclick="handleQuestion5()"> Dentista responsável</label>
+            <label><input type="radio" name="cargo" value="auxiliar_asb" onclick="handleQuestion5()"> Auxiliar de Saúde Bucal (ASB)</label>
+        </div>
+        <div class="aviso">
+            <p> Ao clicar em Confirmar você automaticamente aceita os nossos
+                termos de uso e política de privacidade.
+            </p>
+        </div>
+    </div>
+
+    <div id="page6" class="container">
+        <header>
+            <div class="interface">
+                <div class="principal">
+                <div class="image"><img src="assets/Asset 7.png" alt="logo" /></div>
+                <div class="subtitulo">
+                    <p>Dual Programas Imersivos</p>
+                </div>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-white">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+            </div>
+        </header>
+            <section class="topo-do-site" id="inicio">
+                <div class="txt-topo-site">
+                <h1><span>|</span>Agradecemos seu interesse</h1>
+                <p>
+                    Para dar andamento à sua inscrição, preencha as informações a seguir.
+                </p>
+                </div>
+            </section>
+        <div class="form-group multiple">
+            <label>6. Você trabalha em qual setor dentro do laboratório ou clínica?</label>
+            <label><input type="radio" name="setor" value="socio" onclick="handleQuestion6()"> Sócio ou fundador</label>
+            <label><input type="radio" name="setor" value="setor_digital" onclick="handleQuestion6()"> Setor Digital</label>
+            <label><input type="radio" name="setor" value="setor_resina" onclick="handleQuestion6()"> Setor Resina</label>
+            <label><input type="radio" name="setor" value="setor_metal" onclick="handleQuestion6()"> Setor Metal</label>
+            <label><input type="radio" name="setor" value="setor_ceramica" onclick="handleQuestion6()"> Setor Cerâmica</label>
+            <label><input type="radio" name="setor" value="auxiliar_setor" onclick="handleQuestion6()"> Auxiliar de Setor</label>
+        </div>
+        <div class="aviso">
+            <p> Ao clicar em Confirmar você automaticamente aceita os nossos
+                termos de uso e política de privacidade.
+            </p>
+        </div>
+    </div>
+
+    <div id="page7" class="container">
+        <header>
+            <div class="interface">
+                <div class="principal">
+                <div class="image"><img src="assets/Asset 7.png" alt="logo" /></div>
+                <div class="subtitulo">
+                </div>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-white">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda">
+                <i class="bi bi"></i>
+                </div>
+            </div>
+        </header>
+            <section class="topo-do-site" id="inicio">
+                <div class="txt-topo-site">
+                <p>
+                    Para dar andamento à sua inscrição, preencha as informações a seguir.
+                </p>
+                </div>
+            </section>
+        <div class="form-group multiple">
+            <label>7. Qual é seu faturamento anual ou da sua empresa?</label>
+            <label><input type="radio" name="faturamento" value="acima_10_milhoes" onclick="handleQuestion7()"> Acima de R$ 10 milhões ao ano</label>
+            <label><input type="radio" name="faturamento" value="5_10_milhoes" onclick="handleQuestion7()"> De R$ 5 a R$ 10 milhões ao ano</label>
+            <label><input type="radio" name="faturamento" value="1_5_milhoes" onclick="handleQuestion7()"> De R$ 1 a R$ 5 milhões ao ano</label>
+            <label><input type="radio" name="faturamento" value="500mil_1_milhao" onclick="handleQuestion7()"> De R$ 500 mil a R$ 1 milhão ao ano</label>
+            <label><input type="radio" name="faturamento" value="ate_500_mil" onclick="handleQuestion7()"> Até R$ 500 mil ao ano</label>
+            <label><input type="radio" name="faturamento" value="nao_faturamos" onclick="handleQuestion7()"> Ainda não faturamos</label>
+        </div>
+        <div class="aviso">
+            <p> Ao clicar em Confirmar você automaticamente aceita os nossos
+                termos de uso e política de privacidade.
+            </p>
+        </div>
+    </div>
+
+    <div id="page8" class="container">
+        <header>
+            <div class="interface">
+                <div class="principal">
+                <div class="image"><img src="assets/Asset 7.png" alt="logo" /></div>
+                <div class="subtitulo">
+                    <p>Dual Programas Imersivos</p>
+                </div>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-certo">
+                <i class="bi bi"></i>
+                </div>
+                <div class="borda-white">
+                <i class="bi bi"></i>
+                </div>
+            </div>
+        </header>
+            <section class="topo-do-site" id="inicio">
+                <div class="txt-topo-site">
+                <h1><span>|</span>Agradecemos seu interesse</h1>
+                <p>
+                    Para dar andamento à sua inscrição, preencha as informações a seguir.
+                </p>
+                </div>
+            </section>
+        <div class="form-group multiple">
+            <label>8. Qual sua média salarial?</label>
+            <label><input type="radio" name="salario" value="acima_30_mil" onclick="handleQuestion8()"> Acima de R$ 30 mil ao mês</label>
+            <label><input type="radio" name="salario" value="15_30_mil" onclick="handleQuestion8()"> De R$ 15 mil a R$ 30 mil ao mês</label>
+            <label><input type="radio" name="salario" value="5_15_mil" onclick="handleQuestion8()"> De R$ 5 mil a R$ 15 mil ao mês</label>
+            <label><input type="radio" name="salario" value="1412_5_mil" onclick="handleQuestion8()"> De R$ 1.412 a R$ 5 mil ao mês</label>
+            <label><input type="radio" name="salario" value="ate_1412" onclick="handleQuestion8()"> Até R$ 1.412 ao mês</label>
+        </div>
+        <div class="aviso">
+            <p> Ao clicar em Confirmar você automaticamente aceita os nossos
+                termos de uso e política de privacidade.
+            </p>
+        </div>
+    </div>
+
+    <div id="page9" class="container">
+        <h1>Página 9</h1>
+    </div>
+
+    <div id="page10" class="container">
+        <h1>Página 10</h1>
+    </div>
+
+    <script>
+        // Initialize validation for text inputs
+        validateInput('email', 'btn1');
+        validateInput('nome', 'btn2');
+
+        // Initialize validation for radio inputs
+        validateRadio('telefone', 'btn3');
+        validateRadio('profissao', 'btn4');
+        validateRadio('cargo', 'btn5');
+        validateRadio('setor', 'btn6');
+        validateRadio('faturamento', 'btn7');
+        validateRadio('salario', 'btn8');
+    </script>
+</body>
+</html>

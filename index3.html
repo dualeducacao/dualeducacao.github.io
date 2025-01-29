@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=schedule" />   
+    <title>Cursos</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            background-image: url('assets/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+            width: 100%;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .principal {
+            display: flex;
+            width: 100%;
+        }
+
+        header {
+            text-align: left;
+            height: 80%;
+        }
+
+        header>.interface {
+            display: block;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .subtitulo p {
+            color: #fff;
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 13px;
+            margin-left: 243px;
+        }
+
+        .borda-grande {
+            margin-top: 10px;
+            border-top: 4px solid #9be6ff;
+            border-radius: 7px;
+            width: 625px;
+            display: inline-block;
+        }
+
+        section.topo-do-site {
+            display: flex;
+            align-items: center;
+            margin-top: 100px;
+            width: 500px;
+            height: 40px;
+            padding: 0px 0%;
+        }
+
+        .topo-do-site h1 {
+            color: #fff;
+            font-size: 27px;
+            line-height: 40px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .topo-do-site h1 span{
+            font-size: 25px;
+            color:#7c46ff;
+            margin-right: 10px;
+        }
+
+        .topo-do-site p {
+            color: #fff;
+            font-size: 16px;
+            line-height: 23px;
+        }
+
+        .topo-do-site h2 {
+            color: #fff;
+            font-size: 20px;
+            line-height: 35px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .carousel {
+            position:absolute;
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            background-color: #7c46ff;
+            border-radius: 16px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .carousel-slide .inner {
+            background-color: #292961;
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .top-button {
+            border: 2px solid white;
+            border-radius: 8px;
+            background: transparent;
+            color: white;
+            padding: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: left;
+            cursor: pointer;
+            width: fit-content;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 16px 0 8px;
+            color: #fff;
+        }
+
+        .duration {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #fff;
+        }
+
+        .rating-section {
+            border-top: 1px solid white;
+            border-bottom: 1px solid white;
+            padding: 8px 0;
+            margin-top: 16px;
+        }
+
+        .rating-section .stars {
+            display: flex;
+            align-items: center;
+        }
+
+        .stars span {
+            font-size: 20px;
+            margin-right: 4px;
+            color: transparent;
+            -webkit-text-stroke: 1px white;
+        }
+
+        .stars .star {
+            cursor: pointer;
+        }
+
+        .profile-pics {
+            display: flex;
+            gap: 8px;
+            margin-left: 8px;
+        }
+
+        .profile-pics img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .carousel:hover .carousel-controls {
+            opacity: 1;
+        }
+
+        .control {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .carousel-indicators .indicator {
+            width: 12px;
+            height: 12px;
+            border: 2px solid white;
+            border-radius: 50%;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .carousel-indicators .indicator.active {
+            background: white;
+        }
+
+        .learn-more {
+            margin-top: 16px;
+            align-self: flex-end;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #fff;
+        }
+
+
+        .material-symbols-outlined {
+            color: #fff;
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+        
+        }
+
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="carousel-track">
+            <div class="carousel-slide">
+                <div class="inner">
+                    <button class="top-button">Cursos</button>
+                    <div class="image"><img src="assets/Asset 7.png" alt="logo" /></div>
+                    <div class="title">Conheça nossos programas</div>
+                    <div class="duration">
+                        <i class="material-symbols-outlined">schedule</i> <div class="description">16 horas</div>
+                    </div>
+                    <div class="description">100% online</div>
+                    <div class="rating-section">
+                        <div class="stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <div class="profile-pics">
+                                <img src="assets/Asset.png" alt="Foto 1">
+                                <img src="assets/Asset.png" alt="Foto 2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="learn-more">Saiba mais</div>
+                </div>
+            </div>
+</body>
+</html>
